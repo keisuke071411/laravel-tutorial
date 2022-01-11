@@ -3,7 +3,7 @@ services:
   app:
     build: ./infra/php
     volumes:
-      - ./backend:/workspace/backend
+      - ./backend:/work
   web:
     image: nginx:1.20-alpine
     ports:
