@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,5 @@ Route::get('/', function () {
     logger('welcome route.');
     return view('welcome');
 });
+
+Route::get('/admin-movies', [MovieController::class, 'index']) -> name('movies.index');
