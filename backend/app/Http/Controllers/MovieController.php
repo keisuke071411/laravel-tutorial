@@ -27,6 +27,8 @@ class MovieController extends Controller
     public function create()
     {
         //
+        Movie::factory(1)->create();
+        return redirect('admin/movies/');
     }
 
     /**

@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/admin/movies', [MovieController::class, 'index']) -> name('movies.index');
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+    Route::get('/movies/create', [MovieController::class, 'create']) -> name('movies.create');
     Route::delete('/movies/{id}', [MovieController::class, 'delete']) -> name('movies.delete');
 });
 

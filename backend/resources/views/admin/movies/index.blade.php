@@ -4,6 +4,11 @@
   </head>
   <body>
     <p>Hello World<p>
+      <div>
+        {!! Form::open(['method' => 'get', 'route' => 'admin.movies.create']) !!}
+          {{ Form::submit('作成ボタン') }}
+        {!! Form::close() !!}
+      </div>
     <table>
       <tr>
         <td>id</td>
