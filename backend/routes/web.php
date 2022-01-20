@@ -19,4 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin-movies', [MovieController::class, 'index']) -> name('movies.index');
+Route::get('/admin/movies', [MovieController::class, 'index']) -> name('movies.index');
+
+Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
+    Route::delete('/movies/{id}', [MovieController::class, 'delete']) -> name('movies.delete');
+});
+

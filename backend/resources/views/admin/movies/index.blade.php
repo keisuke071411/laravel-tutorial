@@ -17,6 +17,13 @@
           <td>
             <img width="200" src={{$movie->image_url}} />
           </td>
+          <td>
+            <div>
+              {!! Form::open(['method' => 'delete', 'route' => ['admin.movies.delete', $movie->id] ]) !!}
+                {{ Form::submit('削除ボタン') }}
+              {{ Form::close() }}
+            </div>
+          </td>
         </tr>
       @endforeach
     </table>

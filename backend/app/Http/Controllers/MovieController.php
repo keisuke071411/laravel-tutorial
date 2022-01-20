@@ -80,8 +80,10 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movie $movie)
+    public function delete(Int $id)
     {
-        //
+        Movie::where('id', $id)->delete();
+
+        return redirect('admin/movies/');
     }
 }
