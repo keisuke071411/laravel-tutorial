@@ -29,6 +29,13 @@
               {{ Form::close() }}
             </div>
           </td>
+          <td>
+            <div>
+              {!! Form::open(['method' => 'get', 'route' => ['admin.movies.edit', $movie->id] ]) !!}
+                {{ Form::submit('編集ボタン') }}
+              {{ Form::close() }}
+            </div>
+          </td>
         </tr>
       @endforeach
     </table>

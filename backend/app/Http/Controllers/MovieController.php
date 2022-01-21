@@ -59,9 +59,12 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit(Int $id)
     {
         //
+        $movie = Movie::find($id);
+
+        return view('admin.movies.edit') -> with('movie', $movie);
     }
 
     /**
@@ -71,9 +74,14 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
-    {
-        //
+    public function update(Request $request, Int $id)
+    {;
+        $movie = Movie::find($id);
+        $movie -> title = $request -> title;
+
+        $movie -> save();
+
+        return redirect('admin/movies/');
     }
 
     /**
