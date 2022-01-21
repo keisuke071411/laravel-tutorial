@@ -27,8 +27,7 @@ class MovieController extends Controller
     public function create()
     {
         //
-        Movie::factory(1)->create();
-        return redirect('admin/movies/');
+        return view('admin.movies.create');
     }
 
     /**
@@ -40,6 +39,9 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         //
+        Movie::create($request->all());
+
+        return redirect('admin/movies/');
     }
 
     /**
