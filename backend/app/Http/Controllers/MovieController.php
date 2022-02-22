@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Http\Requests\CreateMovieRequest;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -36,12 +37,12 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMovieRequest $request)
     {
-        //
-        Movie::create($request->all());
+        $data = $request->validated();
+        Movie::create($data);
 
-        return redirect('admin/movies/');
+        return redirect('/admin/movies');
     }
 
     /**
@@ -64,7 +65,7 @@ class MovieController extends Controller
     public function edit(Int $id)
     {
         //
-        $movie = Movie::find($id);
+        $movie = Movie::findOrFail($id);
 
         return view('admin.movies.edit') -> with('movie', $movie);
     }
@@ -78,7 +79,7 @@ class MovieController extends Controller
      */
     public function update(Request $request, Int $id)
     {;
-        $movie = Movie::find($id);
+        $movie = Movie::findOrFail($id);
         $movie -> title = $request -> title;
 
         $movie -> save();
